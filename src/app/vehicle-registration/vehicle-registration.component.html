@@ -1,0 +1,133 @@
+<form class="form" [formGroup]="vehicleForm">
+  <h4 class="text-center text-grey" color="primary">
+    VEHICLE REGISTRATION FORM
+  </h4>
+
+  <mat-form-field class="full-width form-group">
+    <mat-label>Plate number</mat-label>
+    <input
+      matInput
+      required
+      placeholder="Ex. AA-00000"
+      formControlName="plate"
+    />
+  </mat-form-field>
+  <div class="row">
+    <mat-form-field class="half-width">
+      <mat-select required value="car" formControlName="type">
+        <mat-option selected value="car">Car</mat-option>
+        <mat-option value="motorbike">Motorbike</mat-option>
+        <mat-option value="bus">Bus</mat-option>
+        <mat-option value="truck">Truck</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="half-width form-group">
+      <mat-label>Enter vehicle name</mat-label>
+      <input
+        matInput
+        required
+        placeholder="Ex. Tesla model X"
+        formControlName="name"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="half-width">
+      <mat-label>Manufacturer</mat-label>
+      <mat-select required formControlName="manufacturer">
+        <mat-option>Manufacturer</mat-option>
+        <mat-option value="tesla">Tesla</mat-option>
+        <mat-option value="toyota">Toyota</mat-option>
+        <mat-option value="ford">Ford</mat-option>
+        <mat-option value="bugatti">Bugatti</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="half-width form-group">
+      <mat-label>Model</mat-label>
+      <input
+        matInput
+        required
+        placeholder="Ex. model X"
+        formControlName="model"
+      />
+    </mat-form-field>
+  </div>
+
+  <p class="small-text px-1 mb-0">Fuel tank</p>
+
+  <div class="row">
+    <mat-form-field class="half-width">
+      <mat-select required value="gasoline" formControlName="fuel_type">
+        <mat-option selected value="gasoline">Gasoline</mat-option>
+        <mat-option value="diesel">Diesel</mat-option>
+        <mat-option value="liquified petroleum">Liquified Petroleum</mat-option>
+        <mat-option value="ethanol">Ethanol</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="half-width form-group">
+      <mat-label>Fuel Capacity</mat-label>
+      <input
+        matInput
+        required
+        type="number"
+        placeholder="Fuel capacity(L)"
+        formControlName="fuel_capacity"
+      />
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="half-width form-group">
+      <mat-label>Odometer value</mat-label>
+      <input
+        matInput
+        required
+        type="number"
+        placeholder=""
+        formControlName="init_odo_value"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="half-width form-group">
+      <mat-label>Fuel consumption <small>(1 KM)</small> </mat-label>
+      <input
+        matInput
+        required
+        type="number"
+        placeholder="Enter estimated fuel consumption per KILO METER (L)"
+        formControlName="fuel_consumption"
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Note <small>(optional)</small></mat-label>
+    <textarea
+      formControlName="note"
+      matInput
+      placeholder="Ex. It makes me feel..."
+    ></textarea>
+  </mat-form-field>
+
+  <div class="text-center">
+    <button
+      *ngIf="!edit"
+      mat-raised-button
+      color="primary"
+      (click)="addVehicle()"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="edit"
+      mat-raised-button
+      color="primary"
+      (click)="updateVehicle()"
+    >
+      Update
+    </button>
+  </div>
+</form>

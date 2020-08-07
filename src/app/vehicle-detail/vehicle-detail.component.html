@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="icon-width">
+      <mat-icon class="main-icon">directions_car</mat-icon>
+    </div>
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">{{ vehicle.plate }}</p>
+      <mat-card-subtitle>
+        {{ vehicle.name }}
+      </mat-card-subtitle>
+    </div>
+
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">
+        {{ vehicle.manufacturer }}
+      </p>
+      <mat-card-subtitle> Model : {{ vehicle.model }} </mat-card-subtitle>
+    </div>
+
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">{{ vehicle.fuel_type }}</p>
+      <mat-card-subtitle>
+        Capacity : {{ vehicle.fuel_capacity }} (L)
+      </mat-card-subtitle>
+    </div>
+  </div>
+  <mat-divider class="divider mb-1" [inset]="true"></mat-divider>
+
+  <div class="row">
+    <div class="icon-width">
+      <mat-icon class="main-icon">directions_car</mat-icon>
+    </div>
+
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">Odometer value</p>
+      <mat-card-subtitle>
+        Initial : {{ vehicle.init_odo_value }} , Latest :
+        {{ vehicle.odo_value }}
+      </mat-card-subtitle>
+    </div>
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">Fuel Consumption</p>
+      <mat-card-subtitle>
+        {{
+          (vehicle.odo_value - vehicle.init_odo_value) *
+            vehicle.fuel_consumption
+        }}
+        (Litters)
+      </mat-card-subtitle>
+    </div>
+
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">Location</p>
+      <mat-card-subtitle>
+        latitude : {{ vehicle.latitude }} , longitude : {{ vehicle.longitude }}
+      </mat-card-subtitle>
+    </div>
+  </div>
+
+  <google-map
+    height="200px"
+    width="100%"
+    [center]="{ lat: vehicle.latitude, lng: vehicle.longitude }"
+  >
+    <map-marker
+      color="primary"
+      [position]="{ lat: vehicle.latitude, lng: vehicle.longitude }"
+      [label]="{ color: 'white', text: 'Vehicle : ' + vehicle.plate }"
+      [title]="vehicle.plate"
+    >
+    </map-marker
+  ></google-map>
+  <mat-card-subtitle class="mt-1"> {{ vehicle.note }} </mat-card-subtitle>
+</div>

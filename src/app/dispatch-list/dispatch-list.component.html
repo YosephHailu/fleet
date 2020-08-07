@@ -1,0 +1,46 @@
+<!--  -->
+<div class="action-bar text-right px-1">
+    <mat-form-field class="float-left search-bar">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Ex. Pizza" />
+    </mat-form-field>
+  
+    <button
+      mat-button
+      color="primary"
+      class="add-btn"
+      [routerLink]="['/dispatch-registration']"
+      aria-label="Example icon button with a bookmark icon"
+    >
+      <mat-icon>add</mat-icon> ADD NEW
+    </button>
+  </div>
+  <mat-card class="mt-1" *ngFor="let dispatch of dispatches">
+    <mat-card-title
+      >{{ dispatch.plate }}
+      <button
+        class="float-right"
+        (click)="deleteDispatch(dispatch)"
+        color="warn"
+        mat-icon-button
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+  
+      <button
+        [routerLink]="['/dispatch/' + dispatch.id + '/edit']"
+        class="float-right"
+        color="primary"
+        mat-icon-button
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+  
+      <button class="float-right mt-1" color="" mat-stroked-button>
+        Detail
+      </button>
+    </mat-card-title>
+  
+    <mat-card-subtitle> <small>Driver: {{dispatch.driver}}</small></mat-card-subtitle>
+  </mat-card>
+  

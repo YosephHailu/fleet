@@ -1,0 +1,22 @@
+<!-- <agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  <agm-marker [latitude]="lat1" [longitude]="lng1"></agm-marker>
+</agm-map> -->
+
+<google-map
+  height="400px"
+  width="100%"
+  [zoom]="zoom"
+  [center]="center"
+  (mapClick)="click($event)"
+>
+  <map-marker
+    color="primary"
+    *ngFor="let vehicle of vehicles"
+    [position]="{ lat: vehicle.latitude, lng: vehicle.longitude }"
+    [label]="{ color: 'white', text: 'Vehicle : ' + vehicle.plate }"
+    [title]="vehicle.plate"
+    (mapClick)="markerClick(vehicle)"
+  >
+  </map-marker
+></google-map>

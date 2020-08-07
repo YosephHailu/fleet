@@ -1,0 +1,67 @@
+.menu-icon {
+  padding: 0 14px;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.main-icon {
+  flex: 1 1 auto;
+}
+
+.page {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  background-color: #e5e5e5;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+mat-card {
+  width: 60%;
+  margin: 5% auto;
+  border-radius: 8px;
+}
+mat-form-field,
+mat-checkbox {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+mat-card-content {
+  margin-top: 20px;
+}
+
+.nav {
+  width: 100%;
+}
+.nav_btn {
+  width: 33%;
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: 0.6;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  border-radius: 0px !important;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nav {
+  .active {
+    border-bottom: 1px solid #001172;
+    border-bottom: 2px solid #001172;
+  }
+}

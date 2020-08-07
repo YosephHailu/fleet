@@ -1,0 +1,81 @@
+<form class="form" [formGroup]="dispatchForm">
+  <h4 class="text-center text-grey" color="primary">
+    DISPATCH REGISTRATION FORM
+  </h4>
+
+  <mat-form-field class="full-width">
+    <mat-label>Select vehicle</mat-label>
+    <mat-select required value="car" formControlName="vehicle_id">
+      <mat-option
+        *ngFor="let vehicle of vehicles"
+        selected
+        [value]="vehicle.id"
+        >{{ vehicle.plate }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <div class="row">
+    <mat-form-field class="half-width form-group">
+      <mat-label>Enter drive name</mat-label>
+      <input matInput required formControlName="driver" />
+    </mat-form-field>
+
+    <mat-form-field class="half-width form-group">
+      <mat-label>Enter odometer value</mat-label>
+      <input
+        matInput
+        required
+        placeholder="Enter odometer from cars dashboard"
+        formControlName="odometer_value"
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="full-width form-group">
+    <mat-label>Reason</mat-label>
+    <input matInput placeholder="" formControlName="reason" />
+  </mat-form-field>
+
+  <p class="small-text mb-0">
+    Select destination( <small>Click on the map to select</small> ) Latitude :
+    {{ dispatchForm.get("end_latitude").value }}, Longitude :
+    {{ dispatchForm.get("end_longitude").value }}
+  </p>
+
+  <google-map
+    height="200px"
+    width="100%"
+    [zoom]="10"
+    [center]="center"
+    (mapClick)="selectDestination($event)"
+  >
+    <map-marker
+      color="primary"
+      [position]="{
+        lat: dispatchForm.get('end_latitude').value,
+        lng: dispatchForm.get('end_longitude').value
+      }"
+      [label]="{ color: 'white', text: 'Selected location' }"
+    >
+    </map-marker>
+  </google-map>
+
+  <div class="text-center mt-1">
+    <button
+      *ngIf="!edit"
+      mat-raised-button
+      color="primary"
+      (click)="addDispatch()"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="edit"
+      mat-raised-button
+      color="primary"
+      (click)="updateDispatch()"
+    >
+      Update
+    </button>
+  </div>
+</form>

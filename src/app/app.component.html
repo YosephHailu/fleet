@@ -1,0 +1,33 @@
+<div class="page">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align: center;">XOKA FLEET</mat-card-title>
+    <div class="nav">
+      <a
+        [routerLink]="['/vehicle']"
+        mat-button
+        routerLinkActive="active"
+        class="nav_btn"
+      >
+        <mat-icon>commute</mat-icon> Vehicles</a
+      >
+      <a
+        [routerLink]="['/dispatch']"
+        routerLinkActive="active"
+        mat-button
+        class="nav_btn"
+      >
+        <mat-icon>edit_road</mat-icon> Dispatch</a
+      >
+
+      <a
+        [routerLink]="['/locate']"
+        routerLinkActive="active"
+        mat-button
+        class="nav_btn"
+      >
+        <mat-icon>location_on</mat-icon> Locate</a
+      >
+    </div>
+    <router-outlet></router-outlet>
+  </mat-card>
+</div>

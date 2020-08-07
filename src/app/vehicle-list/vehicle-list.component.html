@@ -1,0 +1,69 @@
+<!--  -->
+<div class="action-bar text-right px-1">
+  <mat-form-field class="float-left search-bar">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Ex. Pizza" />
+  </mat-form-field>
+
+  <button
+    mat-button
+    color="primary"
+    class="add-btn"
+    [routerLink]="['/vehicle-registration']"
+    aria-label="Example icon button with a bookmark icon"
+  >
+    <mat-icon>add</mat-icon> ADD NEW
+  </button>
+</div>
+<mat-card class="mt-1" *ngFor="let vehicle of vehicles">
+  <div class="row">
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">{{ vehicle.plate }}</p>
+      <mat-card-subtitle>
+        {{ vehicle.name }}
+      </mat-card-subtitle>
+    </div>
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">{{ vehicle.manufacturer }}</p>
+      <mat-card-subtitle>
+        {{ vehicle.model }}
+      </mat-card-subtitle>
+    </div>
+    
+    <div class="half-width">
+      <p style="padding: 0px; margin-bottom: 4px;">{{ vehicle.fuel_type }}</p>
+      <mat-card-subtitle>
+        Tanker capacity : {{ vehicle.fuel_capacity }} (L)
+      </mat-card-subtitle>
+    </div>
+    <div class="half-width">
+      <button
+        class="float-right"
+        (click)="deleteVehicle(vehicle)"
+        color="warn"
+        mat-icon-button
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <button
+        [routerLink]="['/vehicle/' + vehicle.id + '/edit']"
+        class="float-right"
+        color="primary"
+        mat-icon-button
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button
+        class="float-right mt-1"
+        small
+        [routerLink]="['/vehicle/' + vehicle.id]"
+        color=""
+        mat-stroked-button
+      >
+        Detail
+      </button>
+    </div>
+  </div>
+</mat-card>
